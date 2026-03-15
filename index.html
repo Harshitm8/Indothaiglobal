@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indo Thai Global</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Jost:wght@200;300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --sun: #f5a623;
+  --sun-light: #ffd97d;
+  --green-deep: #182d1b;
+  --cream: #fdf6e3;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  cursor: none;
+  background: var(--green-deep);
+}
+
+#welcome {
+  position: fixed; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+
+#bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 100% 55% at 50% -5%,
+    #e8913a 0%, #b85e28 22%, #2a5c32 48%, #182d1b 100%);
+}
+
+/* ── original sun ── */
+#sun {
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff9c4 0%, #ffd54f 30%, #f5a623 60%, #e65100 100%);
+  box-shadow:
+    0 0 60px 30px rgba(245,166,35,0.5),
+    0 0 120px 60px rgba(245,166,35,0.25),
+    0 0 200px 100px rgba(245,166,35,0.1);
+  animation: sunRise 3s cubic-bezier(.22,1,.36,1) forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+@keyframes sunRise {
+  0%   { top: 40px; opacity: 0; }
+  100% { top: -80px; opacity: 1; }
+}
+
+/* pulse is a separate blurred div — only animates opacity+scale (GPU only) */
+#sun-glow {
+  position: absolute;
+  top: -80px; left: 50%;
+  width: 480px; height: 480px;
+  margin-left: -240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245,166,35,0.5) 0%, rgba(245,166,35,0.2) 45%, transparent 70%);
+  filter: blur(28px);
+  animation: sunRise 3s cubic-bezier(.22,1,.36,1) forwards,
+             glowPulse 6s 3s ease-in-out infinite;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+@keyframes glowPulse {
+  0%,100% { opacity: 0.75; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.15); }
+}
+
+/* ── original rays ── */
+#rays {
+  position: absolute;
+  top: -80px; left: 50%;
+  transform: translateX(-50%);
+  width: 280px; height: 280px;
+  animation: sunRise 3s cubic-bezier(.22,1,.36,1) forwards,
+             raysRotate 20s 3s linear infinite;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+@keyframes raysRotate {
+  to { transform: translateX(-50%) rotate(360deg); }
+}
+.ray {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 3px; height: 180px;
+  background: linear-gradient(to bottom, rgba(255,220,80,0.6), transparent);
+  transform-origin: 50% 0%;
+  border-radius: 2px;
+}
+
+/* ── foliage ── */
+#foliage {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 42%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 360' preserveAspectRatio='none'%3E%3Cpath fill='%23182d1b' d='M0,360V255Q90,175 170,235Q250,295 320,195Q385,105 460,165Q530,225 595,135Q660,50 735,115Q800,175 870,90Q940,10 1010,80Q1075,150 1140,72Q1205,5 1275,75Q1345,148 1410,88L1440,105V360Z'/%3E%3C/svg%3E") no-repeat bottom/100%;
+}
+#foliage2 {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 26%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 240' preserveAspectRatio='none'%3E%3Cpath fill='%23111f14' d='M0,240V165Q85,110 160,150Q235,190 305,120Q375,55 450,110Q520,165 595,100Q665,40 745,100Q815,158 890,85Q960,18 1035,85Q1105,150 1175,78Q1245,15 1320,72Q1390,130 1440,95V240Z'/%3E%3C/svg%3E") no-repeat bottom/100%;
+}
+
+/* ── content ── */
+#content {
+  position: relative; z-index: 5;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center; gap: 14px;
+  animation: fadeUp 0.8s 2.2s both;
+  will-change: opacity, transform;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-weight: 200;
+  font-size: clamp(9px, 1vw, 11px);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255,215,100,0.6);
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(46px, 7.5vw, 100px);
+  line-height: 1;
+  color: var(--cream);
+  text-shadow: 0 2px 24px rgba(0,0,0,0.3);
+}
+h1 em { font-style: italic; color: var(--sun-light); }
+
+.divider {
+  display: flex; align-items: center; gap: 14px;
+  width: 300px;
+}
+.divider-line { flex: 1; height: 1px; background: rgba(255,220,80,0.3); }
+
+.sub {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: clamp(12px, 1.2vw, 14px);
+  letter-spacing: 0.05em;
+  color: rgba(253,246,227,0.5);
+  max-width: 360px;
+}
+
+.hint {
+  margin-top: 20px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 200;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255,215,80,0.45);
+  animation: blink 3s 3.5s ease-in-out infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 0.35; }
+  50%      { opacity: 0.85; }
+}
+
+/* ── cursor ── */
+#cur {
+  position: fixed; pointer-events: none; z-index: 9999;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--sun);
+  mix-blend-mode: screen;
+  transform: translate(-50%,-50%);
+  transition: width .12s, height .12s;
+  will-change: left, top;
+}
+#cur-ring {
+  position: fixed; pointer-events: none; z-index: 9998;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1.5px solid rgba(245,166,35,0.45);
+  transform: translate(-50%,-50%);
+  transition: left .14s ease, top .14s ease;
+  will-change: left, top;
+}
+
+#cv { position: fixed; inset: 0; pointer-events: none; z-index: 9990; }
+
+/* ── exit ── */
+#flash {
+  position: fixed; inset: 0; z-index: 19999;
+  pointer-events: none; opacity: 0;
+  will-change: opacity;
+}
+#flash.go { animation: flashOut 1.55s cubic-bezier(.4,0,.2,1) forwards; }
+@keyframes flashOut {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; background: radial-gradient(circle at var(--cx) var(--cy),
+           rgba(255,220,80,0.9) 0%, rgba(245,166,35,0.6) 30%,
+           rgba(76,175,80,0.4) 60%, transparent 90%); }
+  60%  { opacity: 1; background: radial-gradient(circle at var(--cx) var(--cy),
+           #fff9c4 0%, #ffd54f 20%, #4caf50 50%, #182d1b 80%); }
+  100% { opacity: 1; background: #182d1b; }
+}
+
+.bl {
+  position: fixed; pointer-events: none; z-index: 19998;
+  animation: blAnim var(--d) cubic-bezier(.22,1,.36,1) forwards;
+  will-change: transform, opacity;
+}
+@keyframes blAnim {
+  0%   { transform: translate(0,0) rotate(0deg) scale(0); opacity: 1; }
+  100% { transform: translate(var(--tx),var(--ty)) rotate(var(--r)) scale(1.4); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="cv"></canvas>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<div id="flash"></div>
+
+<div id="welcome">
+  <div id="bg"></div>
+  <div id="sun-glow"></div>
+  <div id="rays"></div>
+  <div id="sun"></div>
+  <div id="foliage"></div>
+  <div id="foliage2"></div>
+
+  <div id="content">
+    <div class="eyebrow">Est. 2005 &nbsp;·&nbsp; Sustainable Drying Technology</div>
+    <h1>Indo Thai<br><em>Global</em></h1>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span style="font-size:16px">🌿</span>
+      <div class="divider-line"></div>
+    </div>
+    <div class="sub">Harnessing the power of the sun to preserve nature's finest harvests</div>
+    <div class="hint">Click anywhere to enter</div>
+  </div>
+</div>
+
+<script>
+/* ── sun rays (original JS approach) ── */
+const raysEl = document.getElementById('rays');
+for (let i = 0; i < 12; i++) {
+  const r = document.createElement('div');
+  r.className = 'ray';
+  r.style.transform = `translateX(-50%) rotate(${i * 30}deg)`;
+  raysEl.appendChild(r);
+}
+
+/* ── cursor ── */
+const cur  = document.getElementById('cur');
+const ring = document.getElementById('cur-ring');
+document.addEventListener('mousemove', e => {
+  cur.style.left  = e.clientX + 'px'; cur.style.top  = e.clientY + 'px';
+  ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
+}, { passive: true });
+document.addEventListener('mousedown', () => { cur.style.width='20px'; cur.style.height='20px'; });
+document.addEventListener('mouseup',   () => { cur.style.width='12px'; cur.style.height='12px'; });
+
+/* ── canvas leaves ── */
+const cv  = document.getElementById('cv');
+const ctx = cv.getContext('2d');
+function resize() { cv.width = innerWidth; cv.height = innerHeight; }
+resize();
+window.addEventListener('resize', resize, { passive: true });
+
+const EM = ['🍃','🌿','🍀','☘️'];
+const pool = [];
+
+function mkLeaf(x, y, burst) {
+  const spd = burst ? 5.5 : 2;
+  return {
+    x, y,
+    vx: (Math.random()-.5)*spd,
+    vy: -(Math.random()*spd + 1.2),
+    g:  burst ? 0.16 : 0.05,
+    life: 1,
+    decay: burst ? 0.026 : 0.006,
+    sz: Math.random()*12+7,
+    rot: Math.random()*Math.PI*2,
+    rv: (Math.random()-.5)*0.09,
+    e: EM[Math.floor(Math.random()*EM.length)]
+  };
+}
+
+/* idle drizzle — 1 leaf per 2s */
+let drizzleId = setInterval(() => {
+  if (exiting) return;
+  const l = mkLeaf(Math.random()*innerWidth, -10, false);
+  l.vy=0.7; l.vx=(Math.random()-.5)*0.5; l.g=0.018; l.decay=0.003;
+  pool.push(l);
+}, 2000);
+
+/* mouse trail — 1 per 220ms */
+let lastT = 0;
+document.addEventListener('mousemove', e => {
+  if (exiting) return;
+  const now = Date.now();
+  if (now-lastT > 220) { lastT=now; pool.push(mkLeaf(e.clientX, e.clientY, false)); }
+}, { passive: true });
+
+/* click burst — 8 leaves */
+document.addEventListener('mousedown', e => {
+  if (!exiting) for (let i=0; i<8; i++) pool.push(mkLeaf(e.clientX, e.clientY, true));
+});
+
+/* render loop — grouped by emoji to minimise font switches */
+(function loop() {
+  ctx.clearRect(0,0,cv.width,cv.height);
+  // cap pool so it never grows unbounded
+  if (pool.length > 40) pool.splice(0, pool.length - 40);
+  for (let i=pool.length-1; i>=0; i--) {
+    const l=pool[i];
+    l.vy+=l.g; l.vx*=0.99; l.x+=l.vx; l.y+=l.vy; l.rot+=l.rv; l.life-=l.decay;
+    if (l.life<=0) { pool.splice(i,1); continue; }
+    ctx.globalAlpha = Math.max(0, l.life);
+    ctx.font = l.sz+'px serif';
+    ctx.save();
+    ctx.translate(l.x,l.y); ctx.rotate(l.rot);
+    ctx.fillText(l.e,-l.sz/2,l.sz/2);
+    ctx.restore();
+  }
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(loop);
+})();
+
+/* ── exit ── */
+let exiting = false;
+document.getElementById('welcome').addEventListener('click', e => {
+  if (exiting) return;
+  exiting = true;
+  clearInterval(drizzleId);
+
+  const es = ['🍃','🌿','🍀','☘️','🌱','🌾','🌻','✨'];
+  for (let i=0; i<28; i++) {
+    const el = document.createElement('div');
+    el.className = 'bl';
+    const ang = (i/28)*Math.PI*2 + Math.random()*.4;
+    const d   = Math.random()*360+120;
+    el.textContent = es[Math.floor(Math.random()*es.length)];
+    el.style.cssText =
+      `left:${e.clientX}px;top:${e.clientY}px;`+
+      `font-size:${18+Math.random()*20}px;`+
+      `--tx:${Math.cos(ang)*d}px;--ty:${Math.sin(ang)*d}px;`+
+      `--r:${Math.random()*720-360}deg;--d:${.7+Math.random()*.7}s`;
+    document.body.appendChild(el);
+  }
+
+  const flash = document.getElementById('flash');
+  flash.style.setProperty('--cx', e.clientX+'px');
+  flash.style.setProperty('--cy', e.clientY+'px');
+  flash.classList.add('go');
+
+  setTimeout(() => { window.location.href = 'home.html'; }, 1550);
+});
+</script>
+</body>
+</html>
