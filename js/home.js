@@ -23,9 +23,27 @@
           revealObs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
     document.querySelectorAll('[data-reveal]').forEach(function (el) {
       revealObs.observe(el);
+    });
+
+    // Staggered reveal for grids (why-cards, sd-model-cards etc)
+    const gridObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var children = entry.target.querySelectorAll('[data-reveal]');
+          children.forEach(function (child, i) {
+            setTimeout(function () { child.classList.add('visible'); }, i * 90);
+          });
+          gridObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.why-grid, .sd-model-grid, .sd-features-grid, .sd-dryable-grid, .company-grid').forEach(function (grid) {
+      gridObs.observe(grid);
     });
   }
 
