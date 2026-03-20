@@ -445,34 +445,245 @@
 <!-- ░░ PRODUCTS GRID ░░ -->
 <section class="products-section" id="products" aria-label="Products">
   <div class="container">
-    <div class="products-header">
+    <div class="products-header" data-reveal>
       <div class="products-eyebrow">Our Range</div>
-      <h2 class="products-title">Quality <em>Products</em></h2>
-      <p class="products-sub">Engineered for every scale, climate and application.</p>
+      <h2 class="products-title">Our <em>Solar Dryer</em></h2>
+      <p class="products-sub">Advanced solar & hybrid drying systems engineered for food, agriculture and pharmaceutical industries.</p>
     </div>
     <div class="products-grid" id="productsGrid"></div>
-    <div class="products-footer">
+    <div class="products-footer" data-reveal>
       <a href="products.html" class="btn btn-ghost">View Full Catalogue →</a>
     </div>
   </div>
 </section>
+
+<!-- Solar Dryer Detail Modal (capacity models + dryable products + technical features) -->
+<div class="sd-modal-backdrop" id="sdModalBackdrop" role="dialog" aria-modal="true" aria-label="Solar Dryer Details">
+  <div class="sd-modal-box" id="sdModalBox">
+    <button class="sd-modal-close" id="sdModalClose" aria-label="Close">✕</button>
+
+    <!-- Tab navigation -->
+    <div class="sd-tabs">
+      <button class="sd-tab active" data-tab="models">Capacity Models</button>
+      <button class="sd-tab" data-tab="dryable">Products to Dry</button>
+      <button class="sd-tab" data-tab="features">Technical Features</button>
+    </div>
+
+    <!-- TAB: Capacity Models -->
+    <div class="sd-tab-panel active" id="tab-models">
+      <div class="sd-section-title">Small Capacity Models</div>
+      <div class="sd-model-grid">
+        <div class="sd-model-card" data-reveal>
+          <div class="sd-model-header">
+            <span class="sd-model-badge">ITG-SD5</span>
+            <span class="sd-model-cap">5 kg</span>
+          </div>
+          <ul class="sd-model-specs">
+            <li><span>Trays</span><span>3</span></li>
+            <li><span>Solar Panels</span><span>1</span></li>
+            <li><span>Fans</span><span>1</span></li>
+            <li><span>Temperature</span><span>45–65°C</span></li>
+            <li><span>Weight</span><span>25 kg</span></li>
+          </ul>
+          <div class="sd-model-apps">Herbs, vegetables, fruits, spices</div>
+        </div>
+        <div class="sd-model-card" data-reveal>
+          <div class="sd-model-header">
+            <span class="sd-model-badge">ITG-SD25</span>
+            <span class="sd-model-cap">25 kg</span>
+          </div>
+          <ul class="sd-model-specs">
+            <li><span>Energy</span><span>Solar + Electric/Biomass backup</span></li>
+            <li><span>Application</span><span>Chilli, ginger, turmeric, fruits</span></li>
+          </ul>
+          <div class="sd-model-apps">Chilli, ginger, turmeric, fruits</div>
+        </div>
+      </div>
+
+      <div class="sd-section-title" style="margin-top:2rem">Medium Capacity Models</div>
+      <div class="sd-model-grid">
+        <div class="sd-model-card" data-reveal>
+          <div class="sd-model-header">
+            <span class="sd-model-badge">ITG-SD50</span>
+            <span class="sd-model-cap">50 kg</span>
+          </div>
+          <ul class="sd-model-specs">
+            <li><span>Trays</span><span>10</span></li>
+            <li><span>Solar Panels</span><span>2</span></li>
+            <li><span>Fans</span><span>2–3</span></li>
+            <li><span>Temperature</span><span>45–70°C</span></li>
+            <li><span>Weight</span><span>120 kg</span></li>
+          </ul>
+          <div class="sd-model-apps">Spices, vegetables, fish</div>
+        </div>
+        <div class="sd-model-card" data-reveal>
+          <div class="sd-model-header">
+            <span class="sd-model-badge">ITG-SD100</span>
+            <span class="sd-model-cap">100 kg</span>
+          </div>
+          <ul class="sd-model-specs">
+            <li><span>Trays</span><span>20</span></li>
+            <li><span>Solar Panels</span><span>3–4</span></li>
+            <li><span>Fans</span><span>4</span></li>
+            <li><span>Temperature</span><span>50–75°C</span></li>
+            <li><span>Weight</span><span>250 kg</span></li>
+          </ul>
+          <div class="sd-model-apps">Fruits, herbs, commercial drying</div>
+        </div>
+      </div>
+
+      <div class="sd-section-title" style="margin-top:2rem">Large Capacity Models</div>
+      <div class="sd-model-grid">
+        <div class="sd-model-card sd-model-card--featured" data-reveal>
+          <div class="sd-model-header">
+            <span class="sd-model-badge">ITG-SD250</span>
+            <span class="sd-model-cap">250 kg</span>
+          </div>
+          <ul class="sd-model-specs">
+            <li><span>Trays</span><span>40</span></li>
+            <li><span>Solar Panels</span><span>6</span></li>
+            <li><span>Fans</span><span>6</span></li>
+            <li><span>Type</span><span>Hybrid heating system</span></li>
+            <li><span>Temperature</span><span>50–80°C</span></li>
+            <li><span>Weight</span><span>500 kg</span></li>
+          </ul>
+          <div class="sd-model-apps">Large farms and food processing</div>
+        </div>
+        <div class="sd-model-card sd-model-card--featured" data-reveal>
+          <div class="sd-model-header">
+            <span class="sd-model-badge">ITG-SD500</span>
+            <span class="sd-model-cap">500 kg</span>
+          </div>
+          <ul class="sd-model-specs">
+            <li><span>Trays</span><span>80</span></li>
+            <li><span>Solar Panels</span><span>10+</span></li>
+            <li><span>Fans</span><span>10</span></li>
+            <li><span>Type</span><span>Hybrid heating system</span></li>
+            <li><span>Temperature</span><span>50–90°C</span></li>
+            <li><span>Weight</span><span>900 kg</span></li>
+          </ul>
+          <div class="sd-model-apps">Industrial food processing, fish drying</div>
+        </div>
+      </div>
+
+      <div class="sd-cta-row">
+        <a href="quote.html" class="btn btn-dark">Request a Quote →</a>
+        <a href="contact.html" class="btn btn-ghost">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- TAB: Products that can be dried -->
+    <div class="sd-tab-panel" id="tab-dryable">
+      <div class="sd-dryable-grid">
+        <div class="sd-dryable-cat">
+          <div class="sd-dryable-icon">🍋</div>
+          <h4>Fruits</h4>
+          <p>Mango · Banana · Pineapple · Apple · Papaya</p>
+        </div>
+        <div class="sd-dryable-cat">
+          <div class="sd-dryable-icon">🥕</div>
+          <h4>Vegetables</h4>
+          <p>Onion · Tomato · Carrot · Garlic · Beetroot</p>
+        </div>
+        <div class="sd-dryable-cat">
+          <div class="sd-dryable-icon">🌶️</div>
+          <h4>Spices</h4>
+          <p>Turmeric · Ginger · Chilli · Pepper · Coriander</p>
+        </div>
+        <div class="sd-dryable-cat">
+          <div class="sd-dryable-icon">🌿</div>
+          <h4>Herbs & Medicinal</h4>
+          <p>Neem · Tulsi · Mint · Aloe Vera · Ashwagandha</p>
+        </div>
+        <div class="sd-dryable-cat">
+          <div class="sd-dryable-icon">🐟</div>
+          <h4>Fish & Meat</h4>
+          <p>Fish · Shrimp · Meat — hygienic protected drying</p>
+        </div>
+        <div class="sd-dryable-cat">
+          <div class="sd-dryable-icon">🌾</div>
+          <h4>Grains & Others</h4>
+          <p>Seeds · Pulses · Cereals · Organic produce</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: Technical Features -->
+    <div class="sd-tab-panel" id="tab-features">
+      <div class="sd-features-grid">
+        <div class="sd-feature-block">
+          <div class="sd-feature-icon">⚡</div>
+          <h4>Solar Panels</h4>
+          <p>High-efficiency photovoltaic panels powering fans and digital controls with zero fuel cost.</p>
+        </div>
+        <div class="sd-feature-block">
+          <div class="sd-feature-icon">💨</div>
+          <h4>Solar Fans</h4>
+          <p>Ensure uniform airflow throughout the drying chamber for consistent, faster drying results.</p>
+        </div>
+        <div class="sd-feature-block">
+          <div class="sd-feature-icon">🏭</div>
+          <h4>Drying Chamber</h4>
+          <p>Food-grade stainless steel chamber with insulation maintaining precise temperature zones.</p>
+        </div>
+        <div class="sd-feature-block">
+          <div class="sd-feature-icon">🔲</div>
+          <h4>Drying Trays</h4>
+          <p>Stainless steel mesh trays for hygienic drying — removable and easy to clean.</p>
+        </div>
+        <div class="sd-feature-block">
+          <div class="sd-feature-icon">🌡️</div>
+          <h4>Digital Temperature Control</h4>
+          <p>Precise digital PID controller with humidity sensors for accurate drying conditions.</p>
+        </div>
+        <div class="sd-feature-block">
+          <div class="sd-feature-icon">🔄</div>
+          <h4>Automatic Airflow</h4>
+          <p>Automatic airflow control with optional IoT monitoring system for remote management.</p>
+        </div>
+        <div class="sd-feature-block">
+          <div class="sd-feature-icon">🔩</div>
+          <h4>Stainless Steel Structure</h4>
+          <p>Heavy-duty stainless steel frame with optional mobility wheels for flexible placement.</p>
+        </div>
+        <div class="sd-feature-block">
+          <div class="sd-feature-icon">☀️</div>
+          <h4>Hybrid Backup</h4>
+          <p>Electric and biomass backup heating ensures continuous drying even on cloudy days.</p>
+        </div>
+      </div>
+      <div class="sd-comparison-table" data-reveal>
+        <h4>Traditional Drying vs Solar Drying</h4>
+        <table>
+          <thead><tr><th>Feature</th><th>Traditional</th><th>Solar Dryer</th></tr></thead>
+          <tbody>
+            <tr><td>Hygiene</td><td class="td-bad">Low</td><td class="td-good">High ✓</td></tr>
+            <tr><td>Drying Speed</td><td class="td-bad">Slow</td><td class="td-good">Fast ✓</td></tr>
+            <tr><td>Weather Dependency</td><td class="td-bad">High</td><td class="td-good">Low ✓</td></tr>
+            <tr><td>Product Quality</td><td class="td-bad">Inconsistent</td><td class="td-good">Uniform ✓</td></tr>
+            <tr><td>Operating Cost</td><td class="td-bad">High</td><td class="td-good">Near Zero ✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 <!-- ░░ VIDEO SHOWCASE ░░ -->
 <section class="video-section" id="videos" aria-label="Product videos">
   <div class="container">
 
-    <div class="video-section-header">
+    <div class="video-section-header" data-reveal>
       <div class="video-section-eyebrow">See It In Action</div>
       <h2 class="video-section-title">Our <em>Products at Work</em></h2>
     </div>
 
-    <!-- dots only — below header, above video -->
     <div class="video-dots-row">
       <div class="video-nav-dots" id="videoNavDots"></div>
     </div>
 
-    <!-- video box with arrows on left/right sides -->
     <div class="video-outer">
       <button class="video-arrow" id="videoPrev" aria-label="Previous video">&#8592;</button>
 
@@ -508,17 +719,7 @@
           <div class="video-progress-bar"></div>
         </div>
 
-        <div class="video-panel" data-index="3" role="tabpanel">
-          <video preload="none" poster="assets/videos/thumb-sprayer.jpg" playsinline>
-            <source src="assets/videos/knapsack-sprayer.mp4" type="video/mp4"/>
-          </video>
-          <div class="video-panel-overlay">
-            <div class="vp-play-btn" aria-label="Play video">▶</div>
-          </div>
-          <div class="video-progress-bar"></div>
-        </div>
-
-        <!-- Persistent controls: mute/unmute button -->
+        <!-- Mute/unmute button -->
         <div class="vp-controls" id="vpControls">
           <button class="vp-mute-btn" id="vpMuteBtn" aria-label="Unmute video" title="Unmute">
             <span class="vp-mute-icon" id="vpMuteIcon">🔇</span>
@@ -539,20 +740,18 @@
   <div class="container">
     <div class="company-grid">
 
-      <div class="company-text">
-        <div class="section-label">Company</div>
+      <div class="company-text" data-reveal>
+        <div class="section-label">About Us</div>
         <h2 class="company-title">About <em>Indo Thai Global</em></h2>
         <p>
-          Indo Thai Global is engaged in manufacturing and supplying innovative
-          solar drying solutions and food processing equipment since 2005.
-          Our systems are designed to provide efficient and hygienic drying
-          for agricultural and industrial applications across India and beyond.
+          Indo Thai Global provides advanced solar drying technology designed for agriculture,
+          food processing, and herbal industries. Our solar dryers help farmers and businesses
+          reduce drying time while maintaining product quality and hygiene.
         </p>
         <p>
-          We focus on sustainability, energy efficiency and long-term
-          durability. Our equipment is used by farmers, food processing
-          industries and entrepreneurs looking to reduce post-harvest loss
-          and increase productivity.
+          Since our founding in 2005, we have built a reputation for manufacturing durable,
+          efficient and easy-to-operate equipment that helps reduce post-harvest losses
+          and improve productivity across India and beyond.
         </p>
         <div class="company-divider"></div>
         <div class="company-details">
@@ -562,34 +761,41 @@
           </div>
           <div class="company-detail-row">
             <span class="detail-key">Location</span>
-            <span class="detail-val">Ludhiana, Punjab, India</span>
+            <span class="detail-val">4th Floor, Kunal Tower, Mall Road, Ludhiana - 141001</span>
           </div>
           <div class="company-detail-row">
             <span class="detail-key">Speciality</span>
-            <span class="detail-val">Solar dryers &amp; food processing equipment</span>
+            <span class="detail-val">Solar &amp; Hybrid Drying Systems</span>
           </div>
           <div class="company-detail-row">
             <span class="detail-key">Industries</span>
-            <span class="detail-val">Agriculture · Food Processing · Pharma</span>
+            <span class="detail-val">Agriculture · Food Processing · Fisheries · Herbal · Spice Processing</span>
           </div>
         </div>
       </div>
 
-      <div class="company-text">
-        <div class="section-label">What We Do</div>
-        <h2 class="company-title">Our <em>Expertise</em></h2>
+      <div class="company-text" data-reveal>
+        <div class="section-label">Our Purpose</div>
+        <h2 class="company-title">Mission &amp; <em>Vision</em></h2>
         <p>
-          We manufacture solar dryers, hybrid dryers and agricultural
-          processing machines designed for commercial and small-scale
-          applications.
+          <strong>Our Mission:</strong> To promote sustainable drying technology using
+          renewable solar energy — making efficient, hygienic drying accessible to
+          every scale of operation, from small family farms to industrial processors.
         </p>
         <p>
-          Our focus is on innovation, quality engineering and
-          sustainable technology to improve food preservation and
-          processing efficiency across all scales of operation.
+          <strong>Our Vision:</strong> To become a global leader in solar drying solutions,
+          contributing to modern agriculture through innovative renewable energy technologies.
         </p>
         <div class="company-divider"></div>
-        <a href="about.html" class="btn btn-ghost" style="margin-top:0.5rem">
+        <div class="company-industries">
+          <div class="ind-tag">🌾 Agriculture</div>
+          <div class="ind-tag">🍽️ Food Processing</div>
+          <div class="ind-tag">🐟 Fisheries</div>
+          <div class="ind-tag">🌶️ Spice Processing</div>
+          <div class="ind-tag">🌿 Herbal Industry</div>
+          <div class="ind-tag">🌱 Organic Farming</div>
+        </div>
+        <a href="about.html" class="btn btn-ghost" style="margin-top:1.2rem">
           Learn More About Us →
         </a>
       </div>
@@ -602,38 +808,52 @@
 <!-- ░░ WHY CHOOSE US ░░ -->
 <section class="why-section" id="why-us" aria-label="Why choose us">
   <div class="container">
-    <div class="why-header">
-      <div class="section-label">Why Us</div>
-      <h2 class="why-title">Why Choose <em>Indo Thai Global</em></h2>
-      <p class="why-sub">Two decades of manufacturing excellence in solar and food processing technology.</p>
+    <div class="why-header" data-reveal>
+      <div class="section-label">Why Solar Dryers</div>
+      <h2 class="why-title">Advantages of <em>Solar Drying</em></h2>
+      <p class="why-sub">Why choose a solar dryer over traditional open-sun drying methods.</p>
     </div>
     <div class="why-grid">
 
-      <div class="why-card">
+      <div class="why-card" data-reveal>
         <span class="why-card-icon">☀️</span>
-        <h3>Solar-First Innovation</h3>
-        <p>Advanced solar drying technology designed for maximum efficiency, zero fuel cost and eco-friendly operation.</p>
+        <h3>Renewable Solar Energy</h3>
+        <p>Uses 100% clean solar energy — zero fuel cost, zero emissions. Reduce electricity bills significantly while drying more efficiently.</p>
         <div class="why-card-accent"></div>
       </div>
 
-      <div class="why-card">
-        <span class="why-card-icon">🏗️</span>
-        <h3>Quality Manufacturing</h3>
-        <p>Durable materials and precision engineering ensure long-lasting performance even in demanding field conditions.</p>
+      <div class="why-card" data-reveal>
+        <span class="why-card-icon">🛡️</span>
+        <h3>Hygienic &amp; Protected</h3>
+        <p>Fully enclosed drying chamber protects produce from dust, insects, rain and contamination — ensuring food-safe, hygienic output.</p>
         <div class="why-card-accent"></div>
       </div>
 
-      <div class="why-card">
+      <div class="why-card" data-reveal>
         <span class="why-card-icon">⚡</span>
-        <h3>Energy Efficient</h3>
-        <p>Reduce electricity usage significantly with solar-powered systems that deliver consistent results year-round.</p>
+        <h3>Faster Drying Speed</h3>
+        <p>Uniform airflow from solar fans ensures consistent heat distribution — drying up to 3× faster than traditional open-sun methods.</p>
         <div class="why-card-accent"></div>
       </div>
 
-      <div class="why-card">
+      <div class="why-card" data-reveal>
+        <span class="why-card-icon">💎</span>
+        <h3>Higher Product Quality</h3>
+        <p>Controlled temperature and humidity deliver uniform drying — preserving colour, nutrients and aroma for higher market value.</p>
+        <div class="why-card-accent"></div>
+      </div>
+
+      <div class="why-card" data-reveal>
+        <span class="why-card-icon">📦</span>
+        <h3>Better Shelf Life</h3>
+        <p>Precise moisture reduction extends product shelf life significantly — reducing post-harvest loss for farmers and processors.</p>
+        <div class="why-card-accent"></div>
+      </div>
+
+      <div class="why-card" data-reveal>
         <span class="why-card-icon">🌾</span>
-        <h3>Industry Experience</h3>
-        <p>Over 20 years of expertise in agricultural and food processing equipment serving clients across India.</p>
+        <h3>20+ Years Experience</h3>
+        <p>Over two decades of manufacturing excellence serving agriculture, food processing, fisheries and herbal industries across India.</p>
         <div class="why-card-accent"></div>
       </div>
 
